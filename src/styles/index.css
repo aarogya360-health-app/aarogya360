@@ -1,0 +1,106 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-midnight-teal: #073B3A;
+    --color-emerald: #11BFA4;
+    --color-soft-mint: #D9FFF1;
+    --color-ice-white: #F8FCFC;
+    --color-deep-navy: #102A43;
+    --color-lavender: #B9A5FF;
+    --color-canvas: #F1F7F6;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-deep-navy);
+    font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  /* Accessible focus indicators */
+  :focus-visible {
+    outline: 2px solid #11BFA4;
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+}
+
+@layer utilities {
+  .glass-card {
+    background: rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    box-shadow: 0 10px 30px -5px rgba(7, 59, 58, 0.06);
+  }
+
+  .glass-card-dark {
+    background: rgba(7, 59, 58, 0.88);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid rgba(17, 191, 164, 0.25);
+    box-shadow: 0 20px 40px -10px rgba(7, 59, 58, 0.35);
+  }
+
+  .glass-pill {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(17, 191, 164, 0.2);
+  }
+
+  .text-gradient-teal {
+    background: linear-gradient(135deg, #073B3A 0%, #11BFA4 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .text-gradient-lavender {
+    background: linear-gradient(135deg, #102A43 0%, #795290 50%, #B9A5FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+}
+
+/* Reduced motion preference */
+@media (prefers-reduced-motion: reduce) {
+  *, ::before, ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Custom fine grid background pattern for Hero */
+.bg-grid-medical {
+  background-size: 32px 32px;
+  background-image: 
+    linear-gradient(to right, rgba(17, 191, 164, 0.07) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(17, 191, 164, 0.07) 1px, transparent 1px);
+}
+
+/* Scan line animation for medical reports illustration */
+@keyframes scanline {
+  0% { transform: translateY(-100%); opacity: 0; }
+  50% { opacity: 0.8; }
+  100% { transform: translateY(240%); opacity: 0; }
+}
+
+.animate-scanline {
+  animation: scanline 3s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+}
+
+/* Subtle ECG pulse animation */
+@keyframes ecg-dash {
+  0% { stroke-dashoffset: 600; }
+  100% { stroke-dashoffset: 0; }
+}
+
+.animate-ecg {
+  stroke-dasharray: 600;
+  animation: ecg-dash 3.5s linear infinite;
+}
